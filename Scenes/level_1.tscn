@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://crsh56itfg2tw"]
 
-[ext_resource type="PackedScene" uid="uid://cv55d52v6j5np" path="res://Scripts/player.tscn" id="1_ire8l"]
+[ext_resource type="PackedScene" uid="uid://cv55d52v6j5np" path="res://Scenes/player.tscn" id="1_vk57k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ire8l"]
 size = Vector2(579, 114)
 
 [node name="level_1" type="Node2D" unique_id=907123490]
 
-[node name="player" parent="." unique_id=1080869436 instance=ExtResource("1_ire8l")]
+[node name="player" parent="." unique_id=1080869436 instance=ExtResource("1_vk57k")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=180512434]
 zoom = Vector2(2, 2)
