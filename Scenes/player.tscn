@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cv55d52v6j5np"]
+[gd_scene format=3 uid="uid://be7l2104e721l"]
 
 [ext_resource type="Script" uid="uid://cadxgbplokmxj" path="res://Scripts/player_controller.gd" id="1_0bb2n"]
 [ext_resource type="Texture2D" uid="uid://fbbo672nmavg" path="res://Assets/Player/Sprites/Player_hollow_knight.png" id="2_duskh"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="knighty"
-run/main_scene="uid://crsh56itfg2tw"
+run/main_scene="uid://bn4oci60cx6iy"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
