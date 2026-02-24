@@ -5,6 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ire8l"]
 size = Vector2(579, 114)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vk57k"]
+size = Vector2(40, 225)
+
 [node name="level_1" type="Node2D" unique_id=907123490]
 
 [node name="player" parent="." unique_id=1080869436 instance=ExtResource("1_vk57k")]
@@ -14,6 +17,10 @@ zoom = Vector2(2, 2)
 
 [node name="temporary_floor" type="StaticBody2D" parent="." unique_id=1278126960]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="temporary_floor" unique_id=553817979]
+position = Vector2(0.5, 117)
+shape = SubResource("RectangleShape2D_ire8l")
+
 [node name="ColorRect" type="ColorRect" parent="temporary_floor" unique_id=590086471]
 offset_left = -289.0
 offset_top = 60.0
@@ -21,6 +28,44 @@ offset_right = 291.0
 offset_bottom = 174.0
 color = Color(0, 0, 0, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="temporary_floor" unique_id=553817979]
-position = Vector2(0.5, 117)
-shape = SubResource("RectangleShape2D_ire8l")
+[node name="wall_1" type="StaticBody2D" parent="." unique_id=214518301]
+position = Vector2(51, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_1" unique_id=1961670522]
+position = Vector2(148, -50.5)
+shape = SubResource("RectangleShape2D_vk57k")
+
+[node name="ColorRect" type="ColorRect" parent="wall_1" unique_id=2147075768]
+offset_left = 128.0
+offset_top = -162.0
+offset_right = 168.0
+offset_bottom = 60.0
+color = Color(0, 0, 0, 1)
+
+[node name="wall_2" type="StaticBody2D" parent="." unique_id=1007229111]
+position = Vector2(18, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_2" unique_id=1362901569]
+position = Vector2(-255, -52.5)
+shape = SubResource("RectangleShape2D_vk57k")
+
+[node name="ColorRect" type="ColorRect" parent="wall_2" unique_id=1497319189]
+offset_left = -275.0
+offset_top = -165.0
+offset_right = -235.0
+offset_bottom = 59.0
+color = Color(0, 0, 0, 1)
+
+[node name="wall_3" type="StaticBody2D" parent="." unique_id=137932293]
+position = Vector2(141, -87)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_3" unique_id=2039205423]
+position = Vector2(-255, -51)
+shape = SubResource("RectangleShape2D_vk57k")
+
+[node name="ColorRect" type="ColorRect" parent="wall_3" unique_id=674752364]
+offset_left = -275.0
+offset_top = -163.0
+offset_right = -235.0
+offset_bottom = 59.0
+color = Color(0, 0, 0, 1)

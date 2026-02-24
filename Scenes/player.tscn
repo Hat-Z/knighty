@@ -100,6 +100,7 @@ _data = {
 }
 
 [node name="player" type="CharacterBody2D" unique_id=1080869436]
+safe_margin = 0.14
 script = ExtResource("1_0bb2n")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=323267798]
@@ -114,3 +115,12 @@ shape = SubResource("RectangleShape2D_jcea2")
 
 [node name="anim" type="AnimationPlayer" parent="." unique_id=359201402]
 libraries/ = SubResource("AnimationLibrary_a6hnc")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=138859170]
+position = Vector2(0, 10)
+
+[node name="raycast_left" type="RayCast2D" parent="Node2D" unique_id=664609496]
+target_position = Vector2(-14, 0)
+
+[node name="raycast_right" type="RayCast2D" parent="Node2D" unique_id=1550970917]
+target_position = Vector2(14, 0)
