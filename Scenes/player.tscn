@@ -121,6 +121,8 @@ position = Vector2(0, 10)
 
 [node name="raycast_left" type="RayCast2D" parent="Node2D" unique_id=664609496]
 target_position = Vector2(-14, 0)
+collision_mask = 2
 
 [node name="raycast_right" type="RayCast2D" parent="Node2D" unique_id=1550970917]
 target_position = Vector2(14, 0)
+collision_mask = 2
