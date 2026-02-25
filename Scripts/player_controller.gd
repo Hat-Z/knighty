@@ -29,6 +29,12 @@ var dash_key_pressed = 0
 var is_dashing = false
 var dash_timer = Timer
 
+@export_category("sword variable")
+@export var is_attacking : bool = false
+
+func _ready() -> void: #sword
+	$sword/sword_collider.disabled = true
+
 func _physics_process(delta: float) -> void:
 	if !is_dashing:
 		velocity.y += gravity * delta
@@ -41,6 +47,10 @@ func _physics_process(delta: float) -> void:
 	set_animations()
 	flip()
 	move_and_slide()
+	
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("sword"):
+		is_attacking = true
 
 func horizontal_movement():
 	if is_wall_jumping == false and is_dashing == false:
@@ -56,28 +66,31 @@ func horizontal_movement():
 		dash()
 		
 func set_animations():
-	if velocity.x != 0:
-		$anim.play("move")
-	if velocity.x == 0:
-		$anim.play("idle")
-	if velocity.y < 0:
-		$anim.play("jump")
-	if velocity.y > 10:
-		$anim.play("fall")
-	if is_on_wall_only():
-		$anim.play("fall")
+	if not is_attacking:
+		if velocity.x != 0:
+			$anim.play("move")
+		if velocity.x == 0:
+			$anim.play("idle")
+		if velocity.y < 0:
+			$anim.play("jump")
+		if velocity.y > 10:
+			$anim.play("fall")
+		if is_on_wall_only():
+			$anim.play("fall")
+	if is_attacking:
+		$anim.play("sword")
 
 func flip():
 	if velocity.x > 0:
 		facing_right = true
-		sprite_2d.flip_h = false
-		#scale.x = scale.y * 1
-		#wall_x_force = 200
+		#sprite_2d.flip_h = false
+		scale.x = scale.y * 1
+		wall_x_force = 200
 	if velocity.x < 0:
 		facing_right = false
-		sprite_2d.flip_h = true
-		#scale.x = scale.y * -1
-		#wall_x_force = -200
+		#sprite_2d.flip_h = true
+		scale.x = scale.y * -1
+		wall_x_force = -200
 
 func jump_logic():
 	
@@ -141,3 +154,7 @@ func dash_started():
 		dash_key_pressed = 0
 	else:
 		return
+
+func reset_states():
+	is_attacking = false
+	

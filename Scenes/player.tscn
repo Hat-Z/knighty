@@ -20,6 +20,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sword/sword_collider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_uwfu8"]
 resource_name = "fall"
@@ -90,14 +102,61 @@ tracks/0/keys = {
 "values": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 }
 
+[sub_resource type="Animation" id="Animation_cvnsp"]
+resource_name = "sword"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [17, 18, 19, 20]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sword/sword_collider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_states"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a6hnc"]
 _data = {
 &"RESET": SubResource("Animation_l3cwt"),
 &"fall": SubResource("Animation_uwfu8"),
 &"idle": SubResource("Animation_tnia3"),
 &"jump": SubResource("Animation_e30d2"),
-&"move": SubResource("Animation_dewun")
+&"move": SubResource("Animation_dewun"),
+&"sword": SubResource("Animation_cvnsp")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6t5aa"]
+size = Vector2(16, 27)
 
 [node name="player" type="CharacterBody2D" unique_id=1080869436]
 safe_margin = 0.14
@@ -126,3 +185,10 @@ collision_mask = 2
 [node name="raycast_right" type="RayCast2D" parent="Node2D" unique_id=1550970917]
 target_position = Vector2(14, 0)
 collision_mask = 2
+
+[node name="sword" type="Area2D" parent="." unique_id=1003107944]
+
+[node name="sword_collider" type="CollisionShape2D" parent="sword" unique_id=831097780]
+position = Vector2(13, 9.5)
+shape = SubResource("RectangleShape2D_6t5aa")
+debug_color = Color(0.9767327, 0, 0.41321284, 0.41960785)
