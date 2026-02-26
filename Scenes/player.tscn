@@ -186,7 +186,9 @@ collision_mask = 2
 target_position = Vector2(14, 0)
 collision_mask = 2
 
-[node name="sword" type="Area2D" parent="." unique_id=1003107944]
+[node name="sword" type="Area2D" parent="." unique_id=1003107944 groups=["sword"]]
+collision_layer = 2
+collision_mask = 4
 
 [node name="sword_collider" type="CollisionShape2D" parent="sword" unique_id=831097780]
 position = Vector2(13, 9.5)
