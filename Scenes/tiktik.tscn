@@ -49,6 +49,7 @@ size = Vector2(21, 22)
 
 [node name="tiktik" type="CharacterBody2D" unique_id=1263616175]
 script = ExtResource("1_3gt54")
+health = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1173168857]
 texture = ExtResource("1_ccl67")
@@ -65,7 +66,7 @@ autoplay = &"move"
 
 [node name="hitbox" type="Area2D" parent="." unique_id=567151893]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=16047756]
 position = Vector2(-0.5, -1)
@@ -73,3 +74,4 @@ shape = SubResource("RectangleShape2D_bh4s3")
 debug_color = Color(0.9242599, 4.6975612e-05, 0.6826146, 0.41960785)
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

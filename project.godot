@@ -15,6 +15,10 @@ run/main_scene="uid://bn4oci60cx6iy"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*uid://dyoc466nel4ht"
+
 [input]
 
 dash={
