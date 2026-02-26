@@ -14,6 +14,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	soul_regeneration()
+	
 	for heart in $heart.get_children():
 		var index = heart.get_index()
 		var x = (index % heart_row_size) * heart_offset
@@ -27,3 +29,15 @@ func _process(delta: float) -> void:
 			heart.frame = (Global.health - last_heart) * 4
 		if index < last_heart:
 			heart.frame = 4
+			
+func soul_regeneration():
+	if Global.soul == 1:
+		$soul.frame = 0
+	elif Global.soul >= 0.75:
+		$soul.frame = 1
+	elif Global.soul >= .5:
+		$soul.frame = 2
+	elif Global.soul >= .25:
+		$soul.frame = 3
+	else:
+		$soul.frame = 4

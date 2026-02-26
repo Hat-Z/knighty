@@ -32,6 +32,11 @@ var dash_timer = Timer
 @export_category("sword variable")
 @export var is_attacking : bool = false
 
+## soul recharging mechanic
+var hold_time : float = 1.5
+var hold_timer : float = 0.0
+var is_holding = false
+ 
 func _ready() -> void: #sword
 	$sword/sword_collider.disabled = true
 
@@ -46,6 +51,7 @@ func _physics_process(delta: float) -> void:
 	wall_logic()
 	set_animations()
 	flip()
+	charging_soul(delta)
 	move_and_slide()
 	
 func _input(event: InputEvent) -> void:
@@ -158,3 +164,33 @@ func dash_started():
 func reset_states():
 	is_attacking = false
 	
+func charging_soul(delta:float):
+	if Input.is_action_just_pressed("charging"):
+		is_holding = true
+		hold_timer = 0
+		
+	if is_holding:
+		if Input.is_action_pressed("charging") and hold_timer <= hold_time:
+			hold_timer += delta
+		else:
+			if hold_timer >= hold_time:
+				can_charge_soul()
+				print("soos")
+			#is_holding = false
+			#hold_timer = 0
+			
+func can_charge_soul():
+	if Global.soul == 1:
+		Global.health += 1
+		Global.soul -= 0.33
+		print("1")
+	elif Global.soul > 0.66:
+		Global.health += 1
+		Global.soul -= 0.33
+		print(".66")
+	elif Global.soul > 0.33:
+		Global.health += 1
+		Global.soul -= 0.33
+		print(".33")
+	else:
+		print("not enuf")
