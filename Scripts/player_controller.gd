@@ -170,13 +170,15 @@ func charging_soul(delta:float):
 		hold_timer = 0
 		
 	if is_holding:
+		velocity = Vector2.ZERO
+		$anim.play("idle")
 		if Input.is_action_pressed("charging") and hold_timer <= hold_time:
 			hold_timer += delta
 		else:
 			if hold_timer >= hold_time:
 				can_charge_soul()
 				print("soos")
-			#is_holding = false
+			is_holding = false
 			#hold_timer = 0
 			
 func can_charge_soul():
